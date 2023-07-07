@@ -13,7 +13,6 @@ import random
 re = "\033[1;31m"
 gr = "\033[1;32m"
 cy = "\033[1;36m"
-# SLEEP_TIME = 60
 
 
 def get_random_sleep_time():
