@@ -3,12 +3,12 @@ from telethon.sync import TelegramClient
 from telethon.tl.types import InputPeerUser
 from telethon.errors.rpcerrorlist import PeerFloodError
 import configparser
-import os
 import sys
 import csv
 import time
 from messages import get_random_message
 import random
+from terminal import clear_console
 
 re = "\033[1;31m"
 gr = "\033[1;32m"
@@ -40,7 +40,7 @@ class main:
             api_hash = cpass["cred"]["hash"]
             phone = cpass["cred"]["phone"]
         except KeyError:
-            os.system("clear")
+            clear_console()
             main.banner()
             print(re + "[!] run python3 setup.py first !!\n")
             sys.exit(1)
@@ -50,11 +50,11 @@ class main:
         client.connect()
         if not client.is_user_authorized():
             client.send_code_request(phone)
-            os.system("clear")
+            clear_console()
             main.banner()
             client.sign_in(phone, input(gr + "[+] Enter the code: " + re))
 
-        os.system("clear")
+        clear_console()
         main.banner()
         input_file = sys.argv[1]
         users = []
